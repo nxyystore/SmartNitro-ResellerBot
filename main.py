@@ -11,7 +11,7 @@ import utils
 from utils import config
 import smartnitro
 
-__version__ = 'v1.2.0'
+__version__ = 'v1.2.0.1'
 
 last_update_ping = int(time.time())
 
