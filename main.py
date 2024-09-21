@@ -357,9 +357,9 @@ async def updateEmbedLoop():
     await client.wait_until_ready()
     try:
         vps_stats = await api.get_vps_stats()
-    except luxurynitro.errors.APIError as exc:
+    except smartnitro.errors.APIError as exc:
         await log.warn(f"{utils.lang.embed_fetch_error} {exc.message}")
-    except luxurynitro.errors.RetryTimeout as exc:
+    except smartnitro.errors.RetryTimeout as exc:
         await log.warn(f"{utils.lang.embed_fetch_error} {exc.message}" + "\n- ".join(f"`{e}`" for e in exc.errors))
     else:
         current_time = int(time.time())
@@ -517,7 +517,7 @@ async def startup():
     except smartnitro.errors.APIError as exc:
         print(f"Error connecting to SmartNitro API ({api._base_url}): {exc.message}")
         if exc.response.status_code == 401:
-            print("It seems like your SmartNitro API key is invalid. You can get a new one at https://nxyy.shop/settings")
+            print("It seems like your SmartNitro API key is invalid. You can get a new one at https://dash.nxyy.shop/settings")
             print("Make sure to paste the full key, including the 'api_' part.")
         exit()
     global_credits = api_user.credits
